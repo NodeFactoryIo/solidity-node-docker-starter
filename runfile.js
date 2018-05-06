@@ -1,7 +1,17 @@
 import { run, help } from 'runjs';
+import * as node from './tasks/node';
+import * as contracts from './tasks/contracts';
+
+export { node, contracts };
 
 export function clean() {
   run('rm -rf node_modules');
+  run('rm -rf build');
+}
+
+
+export function lint() {
+  run('docker-compose run --rm backend npm run lint');
 }
 
 export function build() {
@@ -10,15 +20,6 @@ export function build() {
   run('docker-compose build');
 }
 
-export function test() {
-  run('docker-compose run --rm backend npm run test');
-}
-
-export function dev() {
-  run('docker-compose up');
-}
-
 help(clean, 'Removes all build directories and dependencies');
+help(lint, 'Runs eslint on current project');
 help(build, 'Builds new docker image');
-help(test, 'Runs nodejs tests');
-help(dev, 'Starts application and all dependent services');

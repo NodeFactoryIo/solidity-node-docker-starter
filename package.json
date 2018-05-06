@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon -r dotenv/config -r babel-register backend/run.js",
-    "test": "mocha --require babel-register backend/tests/*",
+    "test": "mocha --require babel-register --reporter mocha-multi-reporters --reporter-options configFile=mocha-backend-config.json backend/tests/*",
     "pretest": "eslint --ignore-path .gitignore ."
   },
   "dependencies": {
@@ -29,6 +29,8 @@
     "eslint": "^4.19.1",
     "eslint-config-strongloop": "^2.1.0",
     "mocha": "^5.1.1",
+    "mocha-junit-reporter": "^1.17.0",
+    "mocha-multi-reporters": "^1.1.7",
     "runjs": "^4.3.2",
     "sinon": "^5.0.4"
   },

@@ -209,6 +209,8 @@ typings/
 
 # dotenv environment variables file
 
+installed_contracts
+build
 
 ### Windows ###
 # Windows thumbnail cache files

@@ -17,7 +17,7 @@ services:
     container_name: "${ETHEREUM_RPC_CONTAINER_NAME:-ethereum-rpc}"
     command: ganache-cli -i ${ETHEREUM_NETWORK_ID:-666}
     ports:
-          - "${ETHEREUM_NETWORK_PORT:-8545}:8545"
+          - "${ETHEREUM_NETWORK_EXPOSED_PORT:-8545}:8545"
 volumes:
   node_modules:
   contracts:

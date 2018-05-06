@@ -1,0 +1,24 @@
+version: "3"
+services:
+  backend:
+    build: .
+    command: sh -c "npm run dev"
+    container_name: "${BACKEND_CONTAINER_NAME:-backend}"
+    volumes:
+          - .:/usr/app
+          - node_modules:/usr/app/node_modules
+          - contracts:/usr/app/installed_contracts
+    ports:
+          - "${BACKEND_PORT:-3000}:3000"
+    depends_on:
+          - "ethereum"
+  ethereum:
+    image: trufflesuite/ganache-cli:v6.1.0
+    container_name: "${ETHEREUM_RPC_CONTAINER_NAME:-ethereum-rpc}"
+    command: ganache-cli -i ${ETHEREUM_NETWORK_ID:-666}
+    ports:
+          - "${ETHEREUM_NETWORK_PORT:-8545}:8545"
+volumes:
+  node_modules:
+  contracts:
+

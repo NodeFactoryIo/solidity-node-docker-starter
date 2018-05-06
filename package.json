@@ -1,5 +1,6 @@
 {
   "name": "solidity-node-docker-starter",
+  "description": "Starter project for developing solidity smart contracts with NodeJs as backend server",
   "version": "0.0.1",
   "repository": "git@github.com:NodeFactoryIo/solidity-node-docker-starter.git",
   "contributors": [
@@ -10,6 +11,13 @@
   "scripts": {
     "dev": "nodemon -r dotenv/config -r babel-register backend/run.js",
     "pretest": "eslint --ignore-path .gitignore ."
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "nodemon": "^1.17.4",
+    "web3": "^1.0.0-beta.34"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -29,12 +37,5 @@
     "requires": [
       "./node_modules/babel-register"
     ]
-  },
-  "dependencies": {
-    "babel-runtime": "^6.26.0",
-    "dotenv": "^5.0.1",
-    "express": "^4.16.3",
-    "nodemon": "^1.17.4",
-    "web3": "^1.0.0-beta.34"
   }
 }

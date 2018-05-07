@@ -6,6 +6,26 @@ contract('Application', function([owner]) {
 
   let contract;
 
+  it('should save something to storage', function() {
+    const message = 'Great test';
+
+    Application.deployed()
+      .then(function(_contract) {
+        contract = _contract;
+        return contract.storeSomething(web3.fromAscii(message));
+      }).then(function() {
+        Storage.deployed()
+          .then(
+            function(storageContract) {
+              return storageContract.something.call();
+            }
+          ).then(function(messageInBytes) {
+            const retrievedMessage = web3.toUtf8(messageInBytes);
+            assert.equal(retrievedMessage, message);
+          });
+      });
+  });
+
   it('should update storage contract address', function() {
     Application.deployed()
       .then(
@@ -16,46 +36,23 @@ contract('Application', function([owner]) {
       )
       .then(
         function() {
+          // Careful, this will have affect on other tests :)
           return contract.setStorageAddress(owner);
         }
       ).then(
-        function() {
-          return contract.getStorageAddress.call();
-        }
-      ).then(
-        function(newStorageAddress) {
-          return assert.notEqual(newStorageAddress, null);
-        }
-      ).catch(
-        function(error) {
-          console.log('error:', error);
-          return assert.fail(0, 1);
-        }
-      );
+      function() {
+        return contract.getStorageAddress.call();
+      }
+    ).then(
+      function(newStorageAddress) {
+        return assert.notEqual(newStorageAddress, null);
+      }
+    ).catch(
+      function(error) {
+        console.log('error:', error);
+        return assert.fail(0, 1);
+      }
+    );
 
-  });
-
-  it('should save something to storage', function(accounts) {
-    const message = 'Great test';
-
-    Application.deployed()
-      .then(function(_contract) {
-        contract = _contract;
-        return contract.storeSomething(web3.fromAscii(message));
-      }).then(function(result) {
-        console.log(result);
-        /*Storage.deployed()
-          .then(
-            function(storageContract) {
-              console.log(storageContract);
-              return storageContract.something.call();
-            }
-          ).then(function(messageInBytes) {
-            console.log(messageInBytes);
-            const retrievedMessage = web3.toAscii(messageInBytes);
-            console.log(retrievedMessage);
-            assert.equal(retrievedMessage, message);
-          });*/
-      });
   });
 });

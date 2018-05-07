@@ -8,7 +8,7 @@ export function deploy(env) {
   if (!env) {
     env = 'development';
   }
-  run(`docker-compose run --rm backend truffle "migrate --network ${env}"`);
+  run(`docker-compose run --rm backend truffle migrate --network ${env}`);
 }
 
 export function redeploy(env) {
@@ -16,7 +16,7 @@ export function redeploy(env) {
     env = 'development';
   }
   run(
-    `docker-compose run --rm backend truffle "migrate --reset --network ${env}"`
+    `docker-compose run --rm backend truffle migrate --reset --network ${env}`
   );
 }
 

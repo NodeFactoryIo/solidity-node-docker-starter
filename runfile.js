@@ -5,8 +5,8 @@ import * as contracts from './tasks/contracts';
 export { node, contracts };
 
 export function clean() {
+  contracts.clean();
   run('rm -rf node_modules');
-  run('rm -rf build');
 }
 
 

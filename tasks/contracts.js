@@ -1,7 +1,7 @@
 import { help, run } from 'runjs';
 
 export function clean() {
-  run('rm -rf build');
+  run('docker-compose run --rm backend rm -rf build');
 }
 
 export function deploy(env) {

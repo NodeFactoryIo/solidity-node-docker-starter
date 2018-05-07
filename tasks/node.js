@@ -8,6 +8,5 @@ export function dev() {
   run('docker-compose up');
 }
 
-
 help(test, 'Runs nodejs tests');
 help(dev, 'Starts application and all dependent services');

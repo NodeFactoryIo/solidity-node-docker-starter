@@ -22,7 +22,7 @@ export function redeploy(env) {
 
 export function compile() {
   run(
-    'docker-compose run --no-deps --rm backend truffle "compile --all"'
+    'docker-compose run --no-deps --rm backend truffle compile --all'
   );
 }
 
@@ -31,7 +31,7 @@ export function test(testName) {
     testName = '*';
   }
   run(
-    `docker-compose run --rm backend truffle "test ${testName}"`
+    `docker-compose run --rm backend truffle test test/${testName}`
   );
 }
 

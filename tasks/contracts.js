@@ -52,7 +52,8 @@ help(
 
 help(
   test,
-  'Runs tests against contracts in docker. It accepts test name as optional argument'
+  'Runs tests against contracts in docker. ' +
+  'It accepts test name as optional argument'
 );
 
 help(

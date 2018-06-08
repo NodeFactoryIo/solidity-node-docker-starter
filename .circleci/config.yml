@@ -1,0 +1,50 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/app
+    machine:
+      image: circleci/classic:latest
+      timezone: Europe/Zagreb
+    steps:
+      - checkout
+      - run: cp .env.sample .env
+      - restore_cache:
+          keys:
+            - v1-docker-{{ .Branch }}
+      - run:
+          name: Load Docker layers cache
+          command: |
+            set +o pipefail
+            docker load -i ~/docker-layers.tar | true
+      - run:
+          name: Build application Docker image
+          command: |
+            export IMAGE_TAG=$CIRCLE_SHA1
+            docker-compose -p ${CIRCLE_PROJECT_REPONAME} build
+      - run:
+          name: Tag docker image as latest
+          command: |
+            docker tag nodefactory/solidity-node-docker-starter:${CIRCLE_SHA1} nodefactory/solidity-node-docker-starter:latest
+      - run:
+          name: Run backend tests
+          command: npx run node:test
+      - run:
+          name: Run contract tests
+          command: npx run contracts:test
+      - run:
+          name: Save docker layers cache
+          command: |
+            docker save -o ~/docker-layers.tar nodefactory/solidity-node-docker-starter:${CIRCLE_SHA1} trufflesuite/ganache-cli:v6.1.0 node:carbon-alpine
+      - save_cache:
+          key: v1-docker-{{ .Branch }}-{{ epoch }}
+          paths:
+            - ~/docker-layers.tar
+      - store_test_results:
+          path: ./test-results
+      - store_artifacts:
+          path: ./test-results
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build

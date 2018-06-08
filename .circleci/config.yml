@@ -8,6 +8,7 @@ jobs:
     steps:
       - checkout
       - run: cp .env.sample .env
+      - run: sudo npm i -g npm
       - restore_cache:
           keys:
             - v1-docker-{{ .Branch }}

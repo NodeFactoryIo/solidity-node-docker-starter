@@ -10,7 +10,7 @@ Following software is required to be installed to use this repo:
 
 ## Usage
 
-On first use of this repo, run `npm init` which will install
+On first use of this repo, run `npm run init` which will install
 all required dependencies for running tasks. Then run `npx run build` which will
 build docker image.
 

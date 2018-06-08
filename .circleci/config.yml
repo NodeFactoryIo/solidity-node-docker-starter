@@ -12,7 +12,7 @@ jobs:
           name: Install circleci dependencies
           command: |
             sudo npm i -g npm
-            sudo npm i runjs
+            sudo npm i runjs babel-core babel-preset-es2015 babel-register
       - restore_cache:
           keys:
             - v1-docker-{{ .Branch }}

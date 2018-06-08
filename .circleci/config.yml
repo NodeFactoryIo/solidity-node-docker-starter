@@ -8,11 +8,6 @@ jobs:
     steps:
       - checkout
       - run: cp .env.sample .env
-      - run:
-          name: Install circleci dependencies
-          command: |
-            sudo npm i -g npm
-            sudo npm i runjs babel-core babel-preset-es2015 babel-register
       - restore_cache:
           keys:
             - v1-docker-{{ .Branch }}
@@ -32,10 +27,10 @@ jobs:
             docker tag nodefactory/solidity-node-docker-starter:${CIRCLE_SHA1} nodefactory/solidity-node-docker-starter:latest
       - run:
           name: Run backend tests
-          command: npx run node:test
+          command: docker-compose run --no-deps --rm backend npm run test
       - run:
           name: Run contract tests
-          command: npx run contracts:test
+          command: docker-compose run --rm backend truffle "test *"
       - run:
           name: Save docker layers cache
           command: |

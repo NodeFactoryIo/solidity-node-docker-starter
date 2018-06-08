@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 let Application = artifacts.require('../contracts/Application.sol');
 
-contract('Application', function(owner) {
+contract('Application', function(accounts) {
 
   let contract;
 
@@ -14,8 +14,8 @@ contract('Application', function(owner) {
         }
       )
       .then(
-        function(originalStorageAddress) {
-          return contract.setStorageAddress(owner);
+        function() {
+          return contract.setStorageAddress(accounts[0]);
         }
       ).then(
         function() {
@@ -23,7 +23,7 @@ contract('Application', function(owner) {
         }
       ).then(
         function(newStorageAddress) {
-          return assert.isNotEqual(newStorageAddress, null);
+          return assert.equal(newStorageAddress, accounts[0]);
         }
       ).catch(
         function(error) {

@@ -25,3 +25,7 @@ Run `npx run` to see all available commands:
 - clean                           - Removes all build directories and dependencies
 - lint                            - Runs eslint on current project
 - build                           - Builds new docker image
+
+## Contribution
+
+If this repository helped you, let us know by donating ETH to `0x0C522283f34801dCF85DAd0Bb41627AcF267EFbd` or feel free to contribute with more features!

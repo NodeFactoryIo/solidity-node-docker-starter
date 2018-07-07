@@ -28,10 +28,10 @@ export function compile() {
 
 export function test(testName) {
   if (!testName) {
-    testName = '*';
+    testName = 'test/*';
   }
   run(
-    `docker-compose run --rm backend truffle "test ${testName}"`
+    `docker-compose run --rm backend truffle test ${testName}`
   );
 }
 

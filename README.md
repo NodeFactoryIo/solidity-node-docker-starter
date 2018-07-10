@@ -28,4 +28,4 @@ Run `npx run` to see all available commands:
 
 ## Contribution
 
-If this repository helped you, let us know by donating ETH to `0x0C522283f34801dCF85DAd0Bb41627AcF267EFbd` or feel free to contribute with more features!
+If this repository helped you, let us know by donating ETH to `0xbD9f96663E07a83ff18915c9074d9dc04d8E64c9` or feel free to contribute with more features!

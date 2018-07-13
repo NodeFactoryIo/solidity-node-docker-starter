@@ -1,4 +1,4 @@
-pragma solidity 0.4.21;
+pragma solidity 0.4.24;
 
 
 import "./Storage.sol";
@@ -8,7 +8,7 @@ contract Application {
 
     address private storageAddress;
 
-    function Application(address _storageAddress) public {
+    constructor(address _storageAddress) public {
         setStorageAddress(_storageAddress);
     }
 

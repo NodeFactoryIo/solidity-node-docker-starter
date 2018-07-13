@@ -26,10 +26,18 @@ export function compile() {
   );
 }
 
+export function solhint() {
+  run(
+    'docker-compose run --rm backend sh -c ' +
+    '"./node_modules/solhint/solhint.js \\"contracts/**/*.sol\\""'
+  );
+}
+
 export function test(testName) {
   if (!testName) {
     testName = 'test/*';
   }
+  solhint();
   run(
     `docker-compose run --rm backend truffle test ${testName}`
   );
@@ -49,7 +57,10 @@ help(
   compile,
   'Compiles all contracts'
 );
-
+help(
+  solhint,
+  'Runs solhint on all smart contracts'
+);
 help(
   test,
   'Runs tests against contracts in docker. ' +

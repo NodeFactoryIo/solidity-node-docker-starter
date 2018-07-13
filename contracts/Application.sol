@@ -12,10 +12,9 @@ contract Application {
         setStorageAddress(_storageAddress);
     }
 
-    function getStorageAddress() public view returns(address _storageAddress){
+    function getStorageAddress() public view returns(address _storageAddress) {
         return storageAddress;
     }
-
 
     function setStorageAddress(address _storageAddress) public {
         storageAddress = _storageAddress;

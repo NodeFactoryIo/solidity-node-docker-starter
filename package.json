@@ -37,6 +37,7 @@
     "mocha-multi-reporters": "^1.1.7",
     "runjs": "^4.3.2",
     "sinon": "^5.0.4",
+    "solhint": "^1.2.1",
     "truffle-hdwallet-provider": "0.0.5"
   },
   "babel": {

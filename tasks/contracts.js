@@ -8,7 +8,7 @@ export function deploy(env) {
   if (!env) {
     env = 'development';
   }
-  run(`docker-compose run --rm backend truffle migrate --network ${env}`);
+  run(`docker-compose run --rm backend node_modules/.bin/truffle migrate --network ${env}`);
 }
 
 export function redeploy(env) {
@@ -16,13 +16,13 @@ export function redeploy(env) {
     env = 'development';
   }
   run(
-    `docker-compose run --rm backend truffle migrate --reset --network ${env}`
+    `docker-compose run --rm backend node_modules/.bin/truffle migrate --reset --network ${env}`
   );
 }
 
 export function compile() {
   run(
-    'docker-compose run --no-deps --rm backend truffle "compile --all"'
+    'docker-compose run --no-deps --rm backend node_modules/.bin/truffle "compile --all"'
   );
 }
 
@@ -39,19 +39,19 @@ export function test(testName) {
   }
   solhint();
   run(
-    `docker-compose run --rm backend truffle test ${testName}`
+    `docker-compose run --rm backend node_modules/.bin/truffle test ${testName}`
   );
 }
 
 help(
   deploy,
   'Run all missing migrations to deploy contracts' +
-  ' to ethereum network. Command accepts param with id of network'
+  ' to Ethereum network. Command accepts param with id of network'
 );
 help(
   redeploy,
   'Run all migrations again to deploy contracts ' +
-  'to ethereum network. Command accepts param with id of network'
+  'to Ethereum network. Command accepts param with id of network'
 );
 help(
   compile,

@@ -30,7 +30,7 @@ jobs:
           command: docker-compose run --no-deps --rm backend npm run test
       - run:
           name: Run contract tests
-          command: docker-compose run --rm backend truffle "test *"
+          command: docker-compose run --rm backend node_modules/.bin/truffle "test *"
       - run:
           name: Save docker layers cache
           command: |

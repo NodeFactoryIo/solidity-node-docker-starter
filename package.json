@@ -1,11 +1,11 @@
 {
   "name": "solidity-node-docker-starter",
-  "description": "Starter project for developing solidity smart contracts with NodeJs as backend server",
-  "version": "0.0.1",
+  "description": "Starter project for developing Solidity smart contracts with Truffle and Node.JS as a backend server",
+  "version": "0.1.0",
   "repository": "git@github.com:NodeFactoryIo/solidity-node-docker-starter.git",
   "contributors": [
     "Marin Petrunić <marin@nodefactory.io>",
-    "Belma gutlić <belma@nodefactory.io"
+    "Belma Gutlić <belma@nodefactory.io>"
   ],
   "license": "MIT",
   "scripts": {
@@ -18,11 +18,10 @@
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "dotenv": "^5.0.1",
-    "eth-gas-reporter": "^0.1.9",
+    "eth-gas-reporter": "^0.1.12",
     "express": "^4.16.3",
     "nodemon": "^1.17.4",
-    "truffle-contract": "^3.0.5",
-    "web3": "^0.20.6"
+    "truffle": "^5.0.10"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -37,7 +36,7 @@
     "mocha-multi-reporters": "^1.1.7",
     "runjs": "^4.3.2",
     "sinon": "^5.0.4",
-    "solhint": "^1.2.1",
+    "solhint": "^2.0.0",
     "truffle-hdwallet-provider": "^1.0.6"
   },
   "babel": {

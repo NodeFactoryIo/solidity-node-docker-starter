@@ -23,6 +23,13 @@ module.exports = {
       network_id: 3,
     },
   },
+
+  compilers: {
+    solc: {
+      version: '0.4.24',
+    },
+  },
+
   mocha: {
     useColors: true,
     reporter: 'mocha-multi-reporters',
